@@ -44,6 +44,8 @@ Flags:
 
 --help
 
+--arrowsoff
+
 Windows PowerShell
 ```
 # Johnson–Trotter only (distinct characters)
@@ -69,12 +71,18 @@ JT on ABC
 
 ```
 == Johnson–Trotter (3! up to 6) ==
-[0] ABC
-[1] ACB
-[2] CAB
-[3] CBA
-[4] BCA
-[5] BAC
+    <- <- <-
+[1] A  B  C
+    <- <- <-
+[2] A  C  B
+    <- <- <-
+[3] C  A  B
+    -> <- <-
+[4] C  B  A
+    <- -> <-
+[5] B  C  A
+    <- <- ->
+[6] B  A  C
 -- Count: 6
 ```
 Lex on AAB
