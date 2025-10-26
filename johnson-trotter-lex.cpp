@@ -185,16 +185,16 @@ Options parseOptions(int argc, char** argv) {
             opt.quiet = true;
         } else if (a == "--test") {
             opt.test = true;
-        } else if (a == "--arrows") {
-            opt.arrows = true;
+        } else if (a == "--arrowsoff") {
+            opt.arrows = false;
         } else if (a == "--help" || a == "-h") {
             std::cout <<
-R"(Usage: johnson-trotter-lex [--algo jt|lex|both] [--quiet] [--arrows] [--test]
+R"(Usage: johnson-trotter-lex [--algo jt|lex|both] [--quiet] [--arrowsoff] [--test]
   stdin: input string (e.g., "ABC")
-  --algo   jt   : Johnson–Trotter (distinct symbols only)
+  --algo   jt   : Johnson-Trotter (distinct symbols only)
            lex  : Lexicographic (std::next_permutation, supports duplicates)
            both : Run both (default)
-  --arrows : Show legacy arrow style stacked ABOVE characters for JT
+  --arrowsoff   : Hide arrows printed ABOVE characters for JT
   --quiet  : Suppress per-step prints (still prints summary)
   --test   : Run built-in tests and exit
 )";
@@ -280,10 +280,10 @@ int main(int argc, char** argv) {
 
         if (opt.algo == Options::Algo::JT || opt.algo == Options::Algo::Both) {
             if (!hasDistinctChars(input)) {
-                std::cerr << "Warning: Johnson–Trotter requires distinct symbols; skipping JT for this input.\n";
+                std::cerr << "Warning: Johnson-Trotter requires distinct symbols; skipping JT for this input.\n";
             } else {
                 if (!opt.quiet) {
-                    std::cout << "== Johnson–Trotter (" << input.size() << "! up to "
+                    std::cout << "== Johnson-Trotter (" << input.size() << "! up to "
                               << factorial_clamped(input.size()) << ") ==\n";
                 }
                 auto jt = johnsonTrotter(input, opt.quiet, opt.arrows);
