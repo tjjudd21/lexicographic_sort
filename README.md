@@ -2,28 +2,29 @@ Modern C++ tool that prints all permutations of a string using Johnson–Trotter
 
 # Johnson–Trotter + Lexicographic Permutations
 
-Generate permutations of a string by:
-- **Johnson–Trotter** (adjacent transpositions; requires all characters distinct)
-- **Lexicographic** order via `std::next_permutation` (handles duplicates)
+Generate all permutations of a string using:
 
-Input comes from **stdin** (a single line). Flags are passed via **argv**.
+- **Johnson–Trotter (JT)** — adjacent transpositions; **requires all distinct characters**. Prints **direction arrows ABOVE the characters** for each step, mirroring the legacy output. Arrows are ASCII `"<-"` and `"->"`. :contentReference[oaicite:2]{index=2} :contentReference[oaicite:3]{index=3}
+- **Lexicographic** order — via `std::next_permutation`; handles duplicates.
+
+Input is read from **stdin** (a single line). Flags are passed via **argv**. 
 
 ---
 
 ## Features
-- Two classic algorithms: JT and Lexicographic
-- Works with duplicates (lexicographic) and enforces distinctness (JT)
-- `--quiet` to suppress per-step prints
-- Built-in `--test` suite for quick verification
-- Helpful errors and usage info
+
+- **Arrows on top (default):** two-line JT print: first line shows arrows, second line shows characters, aligned under the step header. :contentReference[oaicite:6]{index=6}
+- **Algorithm selection:** `--algo jt|lex|both` (default: `both`). :contentReference[oaicite:7]{index=7}
+- **Quiet mode:** `--quiet` suppresses per-step prints, still shows summaries. :contentReference[oaicite:8]{index=8}
+- **Arrows toggle:** `--arrowsoff` hides JT arrows and prints only characters. :contentReference[oaicite:9]{index=9}
+- **Self-tests:** `--test` runs a small suite (JT properties, duplicates handling, lex cases, edge cases). :contentReference[oaicite:10]{index=10}
 
 ---
 
 ## Build
 
-### g++ (Windows, Linux, macOS)
-bash
-```
+### g++ (Windows / Linux / macOS)
+```bash
 g++ -std=gnu++17 -O2 -Wall -Wextra -pedantic johnson-trotter-lex.cpp -o johnson-trotter-lex
 ```
 Windows will produce johnson-trotter-lex.exe.
