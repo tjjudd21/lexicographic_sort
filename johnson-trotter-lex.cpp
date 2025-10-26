@@ -95,7 +95,7 @@ static inline void printJTStateStacked(const std::vector<char>& a,
 /* ---------- Johnson–Trotter (distinct symbols only) ---------- */
 std::vector<std::string> johnsonTrotter(const std::string& input,
                                         bool quiet = false,
-                                        bool show_arrows = false)
+                                        bool show_arrows = true)
 {
     if (!hasDistinctChars(input)) {
         throw std::invalid_argument("Johnson-Trotter requires all distinct symbols");
@@ -302,4 +302,5 @@ int main(int argc, char** argv) {
         std::cerr << "Error: " << e.what() << "\n";
         return 2;
     }
+
 }
